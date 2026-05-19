@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerdeX — Clean the world and get rewarded</title>
+<meta name="description" content="VerdeX está por lanzar máquinas inteligentes de reciclaje que te dan premios reales por cuidar el planeta. Pre-regístrate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green-900:#0b3d2e;--green-700:#14684f;--green-500:#1fae7a;--green-400:#3fd396;
+  --green-200:#b6f0d6;--green-50:#ecfbf3;--mint:#d6f6e6;--gold:#f4c343;--gold-dark:#c89a1a;
+  --text:#0f1e1a;--text-soft:#4a5d57;--bg:#fff;--bg-soft:#f5fbf8;
+  --radius-lg:24px;--radius-md:16px;--radius-sm:10px;
+  --shadow-sm:0 6px 18px rgba(11,61,46,.08);--shadow-md:0 16px 40px rgba(11,61,46,.12);
+  --shadow-lg:0 30px 60px rgba(11,61,46,.18);--ease:cubic-bezier(.2,.7,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+.container{width:100%;max-width:1200px;padding:0 24px;margin:0 auto}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid rgba(11,61,46,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:var(--green-900)}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--green-500),var(--green-700));display:grid;place-items:center;color:#fff}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none}
+.nav-links a{font-weight:600;color:var(--text);font-size:.95rem}
+.nav-links a:hover{color:var(--green-700)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:.95rem;border:2px solid transparent;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease);white-space:nowrap}
+.btn-primary{background:var(--green-700);color:#fff}
+.btn-primary:hover{background:var(--green-900);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-ghost{background:transparent;color:var(--green-900);border-color:var(--green-200)}
+.btn-ghost:hover{background:var(--green-50)}
+.menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--green-900)}
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:24px;border-bottom:1px solid rgba(11,61,46,.06)}
+  .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+}
+
+/* HERO */
+.hero{padding:80px 0 100px;background:linear-gradient(135deg,var(--green-50) 0%,var(--bg-soft) 100%);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(31,174,122,.15),transparent 70%);border-radius:50%}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin:20px 0}
+.hero h1 span{color:var(--green-500)}
+.hero p.lead{font-size:1.2rem;color:var(--text-soft);max-width:540px;margin-bottom:32px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--green-50);color:var(--green-700);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.3px;margin-bottom:16px}
+.eyebrow::before{content:"";width:8px;height:8px;background:var(--green-500);border-radius:50%;box-shadow:0 0 0 4px rgba(31,174,122,.2)}
+.hero-art{position:relative;aspect-ratio:1/1;max-width:520px;margin:0 auto}
+.hero-art .blob-bg{position:absolute;inset:0;border-radius:32% 68% 70% 30% / 50% 60% 40% 50%;background:linear-gradient(135deg,var(--green-200),var(--mint));z-index:0;animation:morph 12s ease-in-out infinite}
+.hero-art img{position:relative;z-index:1;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
+@keyframes morph{
+  0%,100%{border-radius:32% 68% 70% 30% / 50% 60% 40% 50%}
+  50%{border-radius:68% 32% 30% 70% / 60% 40% 60% 40%}
+}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .hero-cta{justify-content:center}
+}
+
+/* GENERIC SECTION */
+.section{padding:100px 0}
+.section-head{max-width:720px;margin:0 auto 56px;text-align:center}
+.section-head p{color:var(--text-soft);font-size:1.05rem}
+h2{font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+
+/* CÓMO FUNCIONA */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:56px}
+.split-art{aspect-ratio:1/1;max-width:480px;margin:0 auto;position:relative}
+.split-art .blob-bg{position:absolute;inset:0;border-radius:32% 68% 70% 30% / 50% 60% 40% 50%;background:var(--green-50);z-index:0}
+.split-art img{position:relative;z-index:1;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-md)}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step 0}
+.step{background:#fff;border-radius:var(--radius-lg);padding:32px;position:relative;box-shadow:var(--shadow-sm);border:1px solid rgba(11,61,46,.06);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.step:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.step::before{counter-increment:step 1;content:counter(step);position:absolute;top:-18px;left:32px;width:44px;height:44px;background:linear-gradient(135deg,var(--green-500),var(--green-700));color:#fff;font-weight:800;border-radius:12px;display:grid;place-items:center;box-shadow:var(--shadow-sm)}
+.step-icon{width:72px;height:72px;background:var(--green-50);border-radius:18px;display:grid;place-items:center;margin-bottom:20px}
+.step h3{font-size:1.25rem;margin-bottom:8px}
+.step p{color:var(--text-soft);font-size:.97rem}
+@media(max-width:768px){.steps{grid-template-columns:1fr}}
+
+/* PROMO */
+.promo-inline{margin-top:56px;background:linear-gradient(120deg,var(--green-700) 0%,var(--green-500) 100%);color:#fff;border-radius:var(--radius-lg);padding:28px 36px;display:flex;align-items:center;gap:24px;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+.promo-inline::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(244,195,67,.4),transparent 60%);border-radius:50%}
+.promo-inline.gold{background:linear-gradient(120deg,var(--gold) 0%,#ffd964 100%);color:var(--green-900)}
+.pi-icon{width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,.18);display:grid;place-items:center;flex-shrink:0;position:relative;z-index:1}
+.promo-inline.gold .pi-icon{background:rgba(11,61,46,.12)}
+.pi-body{flex:1;position:relative;z-index:1}
+.pi-tag{display:inline-block;font-size:.75rem;font-weight:700;background:rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.promo-inline.gold .pi-tag{background:rgba(11,61,46,.15);color:var(--green-900)}
+.promo-inline h3{color:inherit;font-size:1.25rem;margin-bottom:6px}
+.promo-inline p{color:inherit;opacity:.92;font-size:.97rem;margin:0}
+@media(max-width:680px){.promo-inline{flex-direction:column;align-items:flex-start;padding:24px;gap:16px}}
+
+/* BENEFITS */
+.benefits{background:var(--bg-soft)}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.benefit{background:#fff;border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);border:1px solid rgba(11,61,46,.06);transition:transform .3s var(--ease)}
+.benefit:hover{transform:translateY(-4px)}
+.benefit-icon{width:56px;height:56px;border-radius:14px;background:var(--green-50);color:var(--green-700);display:grid;place-items:center;margin-bottom:18px}
+.benefit h3{font-size:1.15rem;margin-bottom:8px}
+.benefit p{color:var(--text-soft);font-size:.95rem}
+@media(max-width:900px){.benefits-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.benefits-grid{grid-template-columns:1fr}}
+
+/* PREMIOS */
+.prizes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.prize{background:#fff;border-radius:var(--radius-md);padding:24px;text-align:center;border:1px solid rgba(11,61,46,.08);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.prize:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.prize-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#ffd964);display:grid;place-items:center;margin:0 auto 14px;color:var(--green-900)}
+.prize h4{font-size:1rem;margin-bottom:4px}
+.prize p{color:var(--text-soft);font-size:.85rem}
+@media(max-width:900px){.prizes-grid{grid-template-columns:1fr 1fr}}
+
+/* IMPACTO */
+.impact{background:linear-gradient(135deg,var(--green-900),var(--green-700));color:#fff;border-radius:var(--radius-lg);padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+.impact::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(63,211,150,.25),transparent 50%)}
+.impact h2{color:#fff;margin-bottom:16px;position:relative}
+.impact .lead{color:rgba(255,255,255,.85);max-width:620px;margin:0 auto 48px;position:relative}
+.impact-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+.stat .num{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;color:var(--green-400);line-height:1;margin-bottom:6px}
+.stat p{color:rgba(255,255,255,.85);font-size:.95rem}
+@media(max-width:700px){.impact-stats{grid-template-columns:1fr;gap:28px}.impact{padding:60px 24px}}
+
+/* REGISTRO */
+.signup{background:var(--bg-soft)}
+.signup-card{max-width:640px;margin:0 auto;background:#fff;border-radius:var(--radius-lg);padding:48px;box-shadow:var(--shadow-md);text-align:center;border:1px solid rgba(11,61,46,.06)}
+.signup-card h2{margin-bottom:12px}
+.signup-card p.lead{color:var(--text-soft);margin-bottom:28px}
+.signup-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.signup-form input{flex:1;min-width:240px;padding:14px 18px;border-radius:999px;border:2px solid var(--green-50);font-size:1rem;font-family:inherit;outline:none;transition:border-color .2s}
+.signup-form input:focus{border-color:var(--green-500)}
+.signup-note{font-size:.85rem;color:var(--text-soft);margin-top:14px}
+
+/* FOOTER */
+footer{background:var(--green-900);color:rgba(255,255,255,.75);padding:60px 0 30px;margin-top:80px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-grid h4{color:#fff;font-size:1rem;margin-bottom:14px}
+.footer-grid a{display:block;color:rgba(255,255,255,.7);padding:4px 0;font-size:.92rem}
+.footer-grid a:hover{color:var(--green-400)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:.88rem}
+@media(max-width:700px){.footer-grid{grid-template-columns:1fr;gap:28px}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="#" class="logo">
+        <span class="logo-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6"></path></svg>
+        </span>
+        VerdeX
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#premios">Premios</a></li>
+        <li><a href="#impacto">Impacto</a></li>
+        <li><a href="#registro" class="btn btn-primary">Pre-regístrate</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Lanzamiento muy pronto</span>
+        <h1>Clean the world <span>and get rewarded</span></h1>
+        <p class="lead">Máquinas inteligentes de reciclaje que te recompensan con puntos canjeables por premios reales. Cuida el planeta y gana mientras lo haces.</p>
+        <div class="hero-cta">
+          <a href="#registro" class="btn btn-primary">Pre-regístrate ahora</a>
+          <a href="#como-funciona" class="btn btn-ghost">Cómo funciona</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="blob-bg"></div>
+        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&q=80&auto=format&fit=crop" alt="Reciclaje sostenible">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="section" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Cómo funcionará</span>
+      <h2>Reciclar va a ser así de fácil</h2>
+      <p>Cuando lancemos, en solo tres pasos vas a generar impacto y acumular recompensas reales.</p>
+    </div>
+
+    <div class="split" style="margin-bottom:64px;">
+      <div>
+        <h3 style="font-size:1.5rem; margin-bottom:12px;">Un proceso pensado para ti</h3>
+        <p style="color:var(--text-soft); margin-bottom:16px;">VerdeX combinará inteligencia artificial e identificación automática de materiales. Solo abres la app, escaneas el QR de la máquina, depositas y listo: los puntos se acreditan al instante en tu cuenta.</p>
+        <p style="color:var(--text-soft);">Sin filas. Sin complicaciones. Sin costo.</p>
+      </div>
+      <div class="split-art">
+        <div class="blob-bg"></div>
+        <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=600&q=80&auto=format&fit=crop" alt="Máquina de reciclaje inteligente">
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#14684f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <h3>Encuentra una máquina VerdeX</h3>
+        <p>Localiza la estación de reciclaje más cercana usando nuestro mapa interactivo o la app móvil.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#14684f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c0-5 4-9 9-9 3 0 5 2 5 2"></path><path d="M21 12c0 5-4 9-9 9-3 0-5-2-5-2"></path><polyline points="17 3 17 8 12 8"></polyline><polyline points="7 21 7 16 12 16"></polyline></svg>
+        </div>
+        <h3>Deposita tus reciclables</h3>
+        <p>Inserta botellas PET, latas de aluminio y plásticos. La máquina los identifica automáticamente.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#14684f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </div>
+        <h3>Recibe puntos y premios</h3>
+        <p>Tus puntos se acumulan automáticamente. Cánjealos por cupones, productos y experiencias.</p>
+      </div>
+    </div>
+
+    <div class="promo-inline gold">
+      <div class="pi-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"></path></svg>
+      </div>
+      <div class="pi-body">
+        <span class="pi-tag">Promo de lanzamiento</span>
+        <h3>Puntos dobles tu primer mes</h3>
+        <p>Si te pre-registras antes del lanzamiento, cada material que recicles durante los primeros 30 días vale el doble.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="section benefits" id="beneficios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Beneficios</span>
+      <h2>Beneficios para ti y para el planeta</h2>
+      <p>Más que reciclar: una forma de generar valor para tu día a día mientras cuidamos el lugar donde vivimos.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"></path><path d="M12 6v2m0 8v2"></path></svg>
+        </div>
+        <h3>Recompensas reales</h3>
+        <p>Cada material reciclado se traduce en puntos canjeables por cupones, productos y experiencias.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-6 0v4"></path><rect x="2" y="9" width="20" height="12" rx="2"></rect></svg>
+        </div>
+        <h3>Totalmente gratuito</h3>
+        <p>Usar las máquinas no tiene ningún costo. Solo necesitas la app y tus reciclables.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"></path></svg>
+        </div>
+        <h3>Impacto medible</h3>
+        <p>En la app verás cuántos kilos has reciclado, CO₂ evitado y árboles equivalentes que ayudaste a proteger.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        </div>
+        <h3>Tecnología inteligente</h3>
+        <p>Identificación automática de materiales mediante IA. Cero error humano, cero esperas.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <h3>Comunidad activa</h3>
+        <p>Únete a miles de personas que ya están cambiando sus hábitos con propósito.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3>Transparencia total</h3>
+        <p>Cada material reciclado puede rastrearse: de la máquina al proceso final de reciclaje.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIOS -->
+<section class="section" id="premios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Premios</span>
+      <h2>Algunos de los premios que estamos preparando</h2>
+      <p>Estos son ejemplos de lo que podrás canjear con tus puntos cuando lancemos.</p>
+    </div>
+    <div class="prizes-grid">
+      <div class="prize">
+        <div class="prize-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M3 9V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"></path><path d="M12 12v6"></path></svg>
+        </div>
+        <h4>Cupones de descuento</h4>
+        <p>En cafés, restaurantes y tiendas aliadas.</p>
+      </div>
+      <div class="prize">
+        <div class="prize-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        </div>
+        <h4>Productos ecofriendly</h4>
+        <p>Botellas reutilizables, bolsas, kits de bambú.</p>
+      </div>
+      <div class="prize">
+        <div class="prize-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </div>
+        <h4>Experiencias</h4>
+        <p>Talleres, eco-tours y entradas a eventos.</p>
+      </div>
+      <div class="prize">
+        <div class="prize-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+        </div>
+        <h4>Donaciones verdes</h4>
+        <p>Convierte tus puntos en árboles plantados en tu nombre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTO -->
+<section class="section" id="impacto">
+  <div class="container">
+    <div class="impact">
+      <span class="eyebrow" style="background:rgba(255,255,255,.15);color:#fff">Impacto</span>
+      <h2>Cada botella cuenta. Y va a sumar mucho.</h2>
+      <p class="lead">Estos son los objetivos que perseguimos en nuestro primer año. Con cada usuario que se suma, nos acercamos más.</p>
+      <div class="impact-stats">
+        <div class="stat">
+          <div class="num">1M+</div>
+          <p>Materiales reciclados al año</p>
+        </div>
+        <div class="stat">
+          <div class="num">500t</div>
+          <p>De CO₂ evitado</p>
+        </div>
+        <div class="stat">
+          <div class="num">100</div>
+          <p>Máquinas instaladas en el país</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRO -->
+<section class="section signup" id="registro">
+  <div class="container">
+    <div class="signup-card">
+      <span class="eyebrow">Pre-registro</span>
+      <h2>Sé de los primeros en reciclar con VerdeX</h2>
+      <p class="lead">Déjanos tu correo y te avisamos en cuanto lancemos. Además, te aseguras la promoción de puntos dobles.</p>
+      <form class="signup-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; document.getElementById('signup-msg').style.display='block';">
+        <input type="email" placeholder="tu@correo.com" required>
+        <button type="submit" class="btn btn-primary">Pre-registrarme</button>
+      </form>
+      <p class="signup-note" id="signup-msg" style="display:none;color:var(--green-700);font-weight:600;margin-top:14px">¡Gracias! Te avisaremos en cuanto lancemos.</p>
+      <p class="signup-note">No spam. Solo te escribimos cuando estemos listos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo" style="color:#fff;margin-bottom:14px">
+          <span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6"></path></svg></span>
+          VerdeX
+        </a>
+        <p style="color:rgba(255,255,255,.65);margin-top:14px;font-size:.92rem;max-width:340px">Clean the world and get rewarded. Reciclaje inteligente con recompensas reales.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#premios">Premios</a>
+        <a href="#impacto">Impacto</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="mailto:hola@verdex.app">hola@verdex.app</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      VerdeX © 2026 — Clean the world and get rewarded
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuToggle')?.addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('#navLinks a').forEach(a=>{
+    a.addEventListener('click', ()=> document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
