@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script defer src="/_vercel/insights/script.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -385,11 +384,12 @@ footer{background:var(--green-900);color:rgba(255,255,255,.75);padding:60px 0 30
       <span class="eyebrow">Pre-registro</span>
       <h2>Sé de los primeros en reciclar con VerdeX</h2>
       <p class="lead">Déjanos tu correo y te avisamos en cuanto lancemos. Además, te aseguras la promoción de puntos dobles.</p>
-      <form class="signup-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; document.getElementById('signup-msg').style.display='block';">
-        <input type="email" placeholder="tu@correo.com" required>
+      <form id="signup-form" class="signup-form" action="https://formspree.io/f/xkoeolre" method="POST">
+        <input type="email" name="email" placeholder="tu@correo.com" required>
         <button type="submit" class="btn btn-primary">Pre-registrarme</button>
       </form>
       <p class="signup-note" id="signup-msg" style="display:none;color:var(--green-700);font-weight:600;margin-top:14px">¡Gracias! Te avisaremos en cuanto lancemos.</p>
+      <p class="signup-note" id="signup-err" style="display:none;color:#c0392b;font-weight:600;margin-top:14px">Hubo un problema. Intenta de nuevo.</p>
       <p class="signup-note">No spam. Solo te escribimos cuando estemos listos.</p>
     </div>
   </div>
@@ -433,7 +433,40 @@ footer{background:var(--green-900);color:rgba(255,255,255,.75);padding:60px 0 30
   document.querySelectorAll('#navLinks a').forEach(a=>{
     a.addEventListener('click', ()=> document.getElementById('navLinks').classList.remove('open'));
   });
+
+  // Envío del formulario de pre-registro a Formspree (sin recargar la página)
+  var signupForm = document.getElementById('signup-form');
+  if (signupForm) {
+    signupForm.addEventListener('submit', async function(e){
+      e.preventDefault();
+      var msg = document.getElementById('signup-msg');
+      var err = document.getElementById('signup-err');
+      msg.style.display = 'none';
+      err.style.display = 'none';
+      try {
+        var res = await fetch(signupForm.action, {
+          method: 'POST',
+          body: new FormData(signupForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          signupForm.reset();
+          msg.style.display = 'block';
+        } else {
+          err.style.display = 'block';
+        }
+      } catch (e) {
+        err.style.display = 'block';
+      }
+    });
+  }
 </script>
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 
 </body>
 </html>
